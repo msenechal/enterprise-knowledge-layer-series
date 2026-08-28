@@ -22,7 +22,7 @@ Later chapters build on earlier ones, so if you jump in mid-series, run the chap
 
 | Folder | Chapter | Article |
 |---|---|---|
-| `chapter1` | 01 · Operating Structure | [Read it](CH01_ARTICLE_LINK) |
+| `chapter1` | 01 · Operating Structure | [Read it](https://medium.com/neo4j/the-enterprise-knowledge-layer-operating-structure-93f5a68f94cf) |
 | `chapter2` | 02 · Processes | In the works |
 
 More chapters land here as they publish: Domain Ontology, Data Products, Physical Systems, Tools & Integration, Agents & Runtime.

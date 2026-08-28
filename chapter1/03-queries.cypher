@@ -9,7 +9,7 @@ SHOW CURRENT GRAPH TYPE AS GRAPH;
 MATCH (team:BusinessOrganisation {name: 'SMB Lending'})
 MATCH (r:Role {seniority: 'lead'})-[:SCOPED_TO]->(team)
 MATCH (r)-[f:FILLED_BY]->(p:Person)
-WHERE f.validTo IS NULL
+WHERE f.validTo IS NULL AND p.status = "active"
 RETURN r.title AS accountableRole, p.name AS holder, p.status AS status;
 
 // 2. Who has held this role, and when?
@@ -20,5 +20,4 @@ ORDER BY f.validFrom;
 // 3. The chain of command above the SMB Loan Underwriter team
 MATCH path = (start:Role {title: 'SMB Loan Underwriter'})-[:REPORTS_TO*]->(top:Role)
 WHERE NOT (top)-[:REPORTS_TO]->(:Role)
-RETURN reduce(chain = head(nodes(path)).title,
-              role IN tail(nodes(path)) | chain + ' -> ' + role.title) AS chain;
+RETURN string.join([role IN nodes(path) | role.title], ' -> ') AS chain;
